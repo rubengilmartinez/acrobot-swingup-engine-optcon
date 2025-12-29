@@ -1,0 +1,9 @@
+\babel@toc {english}{}\relax 
+\contentsline {chapter}{Introduction}{5}{}%
+\contentsline {chapter}{\numberline {1}Problem Setup and Discretization}{6}{}%
+\contentsline {chapter}{\numberline {2}Trajectory Generation}{7}{}%
+\contentsline {chapter}{\numberline {3}Trajectory Tracking via LQR}{8}{}%
+\contentsline {chapter}{\numberline {4}Trajectory Tracking via MPC}{9}{}%
+\contentsline {chapter}{\numberline {5}Results and Animation}{10}{}%
+\contentsline {chapter}{Conclusions}{11}{}%
+\contentsline {chapter}{Bibliography}{11}{}%

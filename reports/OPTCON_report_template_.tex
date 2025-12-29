@@ -1,0 +1,124 @@
+% Template for OPTCON-RL course projects - Acrobot Assignment
+\documentclass[a4paper,11pt,oneside]{book}
+
+% Use UTF-8 for easy typing of tildes like 'é' and 'ñ'
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb,color}
+\usepackage{cite}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+
+\begin{document}
+\pagestyle{myheadings}
+
+%%%%%%%%%%% Cover %%%%%%%%%%%
+\thispagestyle{empty}                                        
+\begin{center}                                                         
+    \vspace{5mm}
+    {\LARGE UNIVERSIT\`A DI BOLOGNA} \\                       
+      \vspace{5mm}
+\end{center}
+\begin{center}
+  % Ensure this file exists in a 'figs' folder
+  \includegraphics[scale=.27]{figs/logo_unibo}
+\end{center}
+\begin{center}
+      \vspace{5mm}
+      {\LARGE School of Engineering} \\
+        \vspace{3mm}
+      {\Large Master Degree in Automation Engineering} \\
+      \vspace{20mm}
+      {\LARGE Optimal Control and Reinforcement Learning} \\
+      \vspace{5mm}{\Large\textbf{OPTIMAL CONTROL OF A GYMNAST ROBOT}}                  
+      \vspace{15mm}
+\end{center}
+
+\begin{center}                                                                                
+     {\large Professor: \textbf{Giuseppe Notarstefano}} \\        
+      \vspace{13mm}
+\end{center}
+
+\begin{center}
+      {\large Students:}\\
+\end{center}
+
+\begin{center}
+      {\textbf{Rubén Gil Martínez}}\\
+\end{center}
+
+
+
+\begin{center}
+      {\textbf{Guillermo López Pérez}}\\
+\end{center}
+
+
+
+\begin{center}
+\vfill
+      {\large Academic year 2025/2026} \\
+\end{center}
+
+\newpage
+\thispagestyle{empty}
+
+%%%%%%%%%%% Abstract %%%%%%%%%%%%
+\chapter*{Abstract}
+\thispagestyle{empty}
+This project focuses on the optimal control of a planar gymnast robot, modeled as a double pendulum with torque applied only at the hip (Acrobot). We implement trajectory generation using Newton-like algorithms and tracking via LQR and MPC techniques[cite: 37, 51, 61].
+
+\newpage
+%%%%%%%%%% Lists %%%%%%%%%%
+\tableofcontents 
+\thispagestyle{empty}
+\newpage
+\listoffigures 
+\thispagestyle{empty}
+\newpage
+
+%%%%%%%%%% Introduction %%%%%%%%%%
+\chapter*{Introduction}
+\addcontentsline{toc}{chapter}{Introduction}
+The goal of this project is to design an optimal trajectory for a planar gymnast robot[cite: 3]. The system consists of two links where actuation is provided only at the second joint (the hip)[cite: 3, 12]. The dynamics involve nonlinear interactions described by mass, Coriolis, and gravity matrices[cite: 13, 16].
+
+\section*{Contributions}
+% Mention individual contributions here
+
+%%%%%%%%%% Tasks %%%%%%%%%%
+
+\chapter{Problem Setup and Discretization}
+% Task 0: Discretize the dynamics[cite: 23, 24].
+In this section, we present the continuous-time dynamics of the Acrobot and the discretization scheme used (e.g., Runge-Kutta 4th order) to transform the system into discrete-time state-space equations[cite: 24, 26].
+
+\chapter{Trajectory Generation}
+% Task 1 & 2: Equilibria and Newton-like algorithm[cite: 35, 48].
+This chapter covers the computation of system equilibria and the generation of an optimal transition trajectory using a closed-loop Newton-like algorithm[cite: 36, 37]. We also explore trajectory generation for smooth state-input curves[cite: 49].
+
+\chapter{Trajectory Tracking via LQR}
+% Task 3: Linearization and LQR[cite: 50].
+We linearize the robot dynamics around the reference trajectory and implement an Infinite or Finite Horizon LQR controller to ensure robust tracking under perturbed initial conditions[cite: 51, 54].
+
+\chapter{Trajectory Tracking via MPC}
+% Task 4: MPC implementation[cite: 60].
+This chapter discusses the implementation of Model Predictive Control (MPC) to track the optimal reference, accounting for system constraints and performance[cite: 61].
+
+\chapter{Results and Animation}
+% Task 5: Animation and required plots[cite: 63, 65].
+We present the simulation results, including the required semi-logarithmic plots for cost and descent directions[cite: 70, 71]. A link to the Python animation of the gymnast robot is also provided[cite: 64].
+
+%%%%%%%%%% Conclusions %%%%%%%%%%
+\chapter*{Conclusions}
+\addcontentsline{toc}{chapter}{Conclusions} 
+% Summary of findings
+
+%%%%%%%%%% Bibliography %%%%%%%%%%%
+% Ensure bibfile.bib exists or use biblatex
+\addcontentsline{toc}{chapter}{Bibliography}
+\bibliographystyle{plain}
+\bibliography{bibfile}
+
+\end{document}
