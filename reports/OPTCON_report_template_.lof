@@ -4,3 +4,7 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Performance metrics for Task 1 (Trajectory Generation).}}{16}{}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Tracking performance and error metrics for Task 2 (LQR Tracking).}}{17}{}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Robustness metric for Task 3.}}{17}{}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Comparative analysis for Task 4.}}{17}{}%

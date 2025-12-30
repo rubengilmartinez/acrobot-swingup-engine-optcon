@@ -10,151 +10,147 @@
 \usepackage{cite}
 \usepackage{graphicx}
 \usepackage{float}
-\usepackage[a4paper, total={6in, 8in}]{geometry}
+
 
 \begin{document}
-\pagestyle{myheadings}
+	\pagestyle{myheadings}
+	
+	%%%%%%%%%%% Cover %%%%%%%%%%%
+	\thispagestyle{empty}                                        
+	\begin{center}                                                         
+		\vspace{5mm}
+		{\LARGE UNIVERSIT\`A DI BOLOGNA} \\                       
+		\vspace{5mm}
+	\end{center}
+	\begin{center}
+		% Ensure this file exists in a 'figs' folder
+		\includegraphics[scale=.27]{figs/logo_unibo}
+	\end{center}
+	\begin{center}
+		\vspace{5mm}
+		{\LARGE School of Engineering} \\
+		\vspace{3mm}
+		{\Large Master Degree in Automation Engineering} \\
+		\vspace{20mm}
+		{\LARGE Optimal Control and Reinforcement Learning} \\
+		\vspace{5mm}{\Large\textbf{OPTIMAL CONTROL OF A GYMNAST ROBOT}}                  
+		\vspace{15mm}
+	\end{center}
+	
+	\begin{center}                                                                                
+		{\large Professor: \textbf{Giuseppe Notarstefano}} \\        
+		\vspace{13mm}
+	\end{center}
+	
+	\begin{center}
+		{\large Students:}\\
+	\end{center}
+	
+	\begin{center}
+		{\textbf{Rubén Gil Martínez}}\\
+	\end{center}
+	
+	
+	
+	\begin{center}
+		{\textbf{Guillermo López Pérez}}\\
+	\end{center}
+	
+	
+	
+	\begin{center}
+		\vfill
+		{\large Academic year 2025/2026} \\
+	\end{center}
+	
+	\newpage
+	\thispagestyle{empty}
+	
+	%%%%%%%%%%% Abstract %%%%%%%%%%%%
+	\chapter*{Abstract}
+	\thispagestyle{empty}
+	This project focuses on the optimal control of a planar gymnast robot, modeled as a double pendulum with torque applied only at the hip (Acrobot). We implement trajectory generation using Newton-like algorithms and tracking via LQR and MPC techniques[cite: 37, 51, 61].
+	
+	\newpage
+	%%%%%%%%%% Lists %%%%%%%%%%
+	\tableofcontents 
+	\thispagestyle{empty}
+	\newpage
+	\listoffigures 
+	\thispagestyle{empty}
+	\newpage
+	
+	%%%%%%%%%% Introduction %%%%%%%%%%
+	\chapter*{Introduction}
+	\addcontentsline{toc}{chapter}{Introduction}
+	The goal of this project is to design an optimal trajectory for a planar gymnast robot[cite: 3]. The system consists of two links where actuation is provided only at the second joint (the hip)[cite: 3, 12]. The dynamics involve nonlinear interactions described by mass, Coriolis, and gravity matrices[cite: 13, 16].
+	
 
-%%%%%%%%%%% Cover %%%%%%%%%%%
-\thispagestyle{empty}                                        
-\begin{center}                                                         
-    \vspace{5mm}
-    {\LARGE UNIVERSIT\`A DI BOLOGNA} \\                       
-      \vspace{5mm}
-\end{center}
-\begin{center}
-  % Ensure this file exists in a 'figs' folder
-  \includegraphics[scale=.27]{figs/logo_unibo}
-\end{center}
-\begin{center}
-      \vspace{5mm}
-      {\LARGE School of Engineering} \\
-        \vspace{3mm}
-      {\Large Master Degree in Automation Engineering} \\
-      \vspace{20mm}
-      {\LARGE Optimal Control and Reinforcement Learning} \\
-      \vspace{5mm}{\Large\textbf{OPTIMAL CONTROL OF A GYMNAST ROBOT}}                  
-      \vspace{15mm}
-\end{center}
+	%%%%%%%%%% Tasks %%%%%%%%%%
+	
+\chapter{Task 0: Problem Setup and Discretization}
+\section{System Description}
+The Acrobot is a generic planar gymnast robot consisting of two links and two joints. It is a canonical example of an underactuated mechanical system, where control input is only available at the second joint (the "hip"), while the first joint (the "shoulder") is passive.
 
-\begin{center}                                                                                
-     {\large Professor: \textbf{Giuseppe Notarstefano}} \\        
-      \vspace{13mm}
-\end{center}
+The state of the system is defined by the generalized coordinates $q = [\theta_1, \theta_2]^\top$, where $\theta_1$ is the angle of the first link with respect to the vertical axis, and $\theta_2$ is the relative angle of the second link with respect to the first. The full state vector is given by $x = [\theta_1, \theta_2, \dot{\theta}_1, \dot{\theta}_2]^\top \in \mathbb{R}^4$. The control input $u = \tau \in \mathbb{R}$ represents the torque applied at the hip joint.
 
-\begin{center}
-      {\large Students:}\\
-\end{center}
-
-\begin{center}
-      {\textbf{Rubén Gil Martínez}}\\
-\end{center}
-
-
-
-\begin{center}
-      {\textbf{Guillermo López Pérez}}\\
-\end{center}
-
-
-
-\begin{center}
-\vfill
-      {\large Academic year 2025/2026} \\
-\end{center}
-
-\newpage
-\thispagestyle{empty}
-
-%%%%%%%%%%% Abstract %%%%%%%%%%%%
-\chapter*{Abstract}
-\thispagestyle{empty}
-This project focuses on the optimal control of a planar gymnast robot, modeled as a double pendulum with torque applied only at the hip (Acrobot). We implement trajectory generation using Newton-like algorithms and tracking via LQR and MPC techniques[cite: 37, 51, 61].
-
-\newpage
-%%%%%%%%%% Lists %%%%%%%%%%
-\tableofcontents 
-\thispagestyle{empty}
-\newpage
-\listoffigures 
-\thispagestyle{empty}
-\newpage
-
-%%%%%%%%%% Introduction %%%%%%%%%%
-\chapter*{Introduction}
-\addcontentsline{toc}{chapter}{Introduction}
-The goal of this project is to design an optimal trajectory for a planar gymnast robot[cite: 3]. The system consists of two links where actuation is provided only at the second joint (the hip)[cite: 3, 12]. The dynamics involve nonlinear interactions described by mass, Coriolis, and gravity matrices[cite: 13, 16].
-
-\section*{Contributions}
-% Mention individual contributions here
-
-%%%%%%%%%% Tasks %%%%%%%%%%
-
-\chapter{Problem Setup and Discretization}
-\label{chap:setup}
-
-In this chapter, we define the mathematical model of the planar gymnast robot (Acrobot) and the numerical methods employed to simulate its behavior for optimal control purposes.
-
-\section{Continuous-Time Dynamics}
-The system is modeled as a planar double pendulum with actuation provided solely at the second joint (the hip). [cite_start]The state of the system is defined as $x = [\theta_1, \theta_2, \dot{\theta}_1, \dot{\theta}_2]^\top$, where $\theta_1$ is the angle of the first link with respect to the vertical, and $\theta_2$ is the relative angle of the second link[cite: 11].
-
-The equations of motion are given in the standard manipulator form:
+\section{Equations of Motion}
+The continuous-time dynamics of the Acrobot are derived using the Euler-Lagrange formalism and can be expressed in the standard manipulator form:
 \begin{equation}
-    M(q)\ddot{q} + C(q, \dot{q})\dot{q} + F\dot{q} + G(q) = \begin{bmatrix} 0 \\ \tau \end{bmatrix}
-    \label{eq:manipulator}
+    M(q)\ddot{q} + C(q, \dot{q})\dot{q} + F\dot{q} + G(q) = B u
 \end{equation}
-[cite_start]where $q = [\theta_1, \theta_2]^\top$ represents the configuration vector and $\tau$ is the control torque applied to the second link[cite: 13].
-
-[cite_start]The system matrices are defined as follows[cite: 16, 17]:
+where:
 \begin{itemize}
-    \item The Mass Matrix $M(q)$, which captures the inertial properties of the links:
-    \begin{equation*}
-    M(q) = \begin{bmatrix} 
-    I_1 + I_2 + m_1 l_{c1}^2 + m_2(l_1^2 + l_{c2}^2 + 2l_1 l_{c2} \cos \theta_2) & I_2 + m_2 l_{c2}(l_1 \cos \theta_2 + l_{c2}) \\
-    I_2 + m_2 l_{c2}(l_1 \cos \theta_2 + l_{c2}) & I_2 + m_2 l_{c2}^2
-    \end{bmatrix}
-    \end{equation*}
-    
-    \item The Coriolis Matrix $C(q, \dot{q})$, describing forces proportional to velocity squared (centripetal/Coriolis):
-    \begin{equation*}
-    C(q, \dot{q}) = \begin{bmatrix} 
-    -m_2 l_1 l_{c2} \dot{\theta}_2 \sin \theta_2 & -m_2 l_1 l_{c2} (\dot{\theta}_1 + \dot{\theta}_2) \sin \theta_2 \\
-    m_2 l_1 l_{c2} \dot{\theta}_1 \sin \theta_2 & 0
-    \end{bmatrix}
-    \end{equation*}
-    
-    \item The Gravity Vector $G(q)$, derived from potential energy:
-    \begin{equation*}
-    G(q) = \begin{bmatrix} 
-    g m_1 l_{c1} \sin \theta_1 + g m_2 (l_1 \sin \theta_1 + l_{c2} \sin(\theta_1 + \theta_2)) \\
-    g m_2 l_{c2} \sin(\theta_1 + \theta_2)
-    \end{bmatrix}
-    \end{equation*}
-    
-    \item The Friction Matrix $F$, modeling viscous damping coefficients $f_1, f_2$:
-    \begin{equation*}
-    F = \begin{bmatrix} f_1 & 0 \\ 0 & f_2 \end{bmatrix}
-    \end{equation*}
+    \item $M(q) \in \mathbb{R}^{2 \times 2}$ is the symmetric, positive-definite mass matrix.
+    \item $C(q, \dot{q}) \in \mathbb{R}^{2 \times 2}$ represents Coriolis and centrifugal forces.
+    \item $F \in \mathbb{R}^{2 \times 2}$ is the diagonal matrix of viscous friction coefficients.
+    \item $G(q) \in \mathbb{R}^2$ is the gravity vector.
+    \item $B = [0, 1]^\top$ is the actuation matrix.
 \end{itemize}
 
-To simulate the system, we isolate the acceleration $\ddot{q}$ by inverting the mass matrix:
+For simulation and control design purposes, we solve for the joint accelerations $\ddot{q}$:
 \begin{equation}
-    \ddot{q} = M(q)^{-1} \left( \begin{bmatrix} 0 \\ \tau \end{bmatrix} - C(q, \dot{q})\dot{q} - F\dot{q} - G(q) \right)
+    \ddot{q} = M(q)^{-1} \left( B u - C(q, \dot{q})\dot{q} - F\dot{q} - G(q) \right)
 \end{equation}
-[cite_start]For this project, we utilize \textbf{Parameter Set 3}, characterized by heavier links ($m_{1,2}=1.5$ kg) and higher inertia ($I_{1,2}=2$ kg$\cdot$m$^2$) compared to the baseline[cite: 21].
 
-\section{Discretization Scheme}
-To employ discrete-time optimal control algorithms, we discretize the continuous dynamics $\dot{x} = f_c(x, u)$ into a mapping $x_{k+1} = f_d(x_k, u_k)$. [cite_start]We employ the \textbf{Runge-Kutta 4th Order (RK4)} method to ensure numerical stability and high accuracy, which is critical for the convergence of Newton-type algorithms[cite: 26].
+\section{Physical Parameters}
+The project employs Parameter Set 3, which defines the following physical constants:
+\begin{table}[H]
+    \centering
+    \begin{tabular}{lcl}
+        \hline
+        Parameter & Symbol & Value \\
+        \hline
+        Mass of link 1 & $m_1$ & 1.5 kg \\
+        Mass of link 2 & $m_2$ & 1.5 kg \\
+        Length of link 1 & $l_1$ & 2.0 m \\
+        Length of link 2 & $l_2$ & 2.0 m \\
+        COM distance link 1 & $l_{c1}$ & 1.0 m \\
+        COM distance link 2 & $l_{c2}$ & 1.0 m \\
+        Inertia of link 1 & $I_1$ & 2.0 kg$\cdot$m$^2$ \\
+        Inertia of link 2 & $I_2$ & 2.0 kg$\cdot$m$^2$ \\
+        Gravity & $g$ & 9.81 m/s$^2$ \\
+        Viscous friction & $f_1, f_2$ & 1.0 N$\cdot$m$\cdot$s/rad \\
+        \hline
+    \end{tabular}
+    \caption{Acrobot Physical Parameters (Set 3)}
+    \label{tab:params}
+\end{table}
 
-[cite_start]Given a time step $d_t$, the update rule is defined as[cite: 29, 30, 31, 32, 33]:
-\begin{align}
-    k_1 &= f_c(x_k, u_k) \nonumber \\
-    k_2 &= f_c(x_k + \frac{d_t}{2} k_1, u_k) \nonumber \\
-    k_3 &= f_c(x_k + \frac{d_t}{2} k_2, u_k) \nonumber \\
-    k_4 &= f_c(x_k + d_t k_3, u_k) \nonumber \\
-    x_{k+1} &= x_k + \frac{d_t}{6} (k_1 + 2k_2 + 2k_3 + k_4)
-\end{align}
-This discretized model serves as the foundation for the trajectory generation and tracking tasks in subsequent chapters.
+
+
+\section{Discretization via Runge-Kutta 4}
+For numerical simulation and discrete-time optimal control, the continuous-time dynamics $\dot{x} = f_c(x, u)$ must be discretized. We employ the 4th-order Runge-Kutta (RK4) integration scheme with a constant sampling period $d_t = 0.01$ s. Given the state at time $t$, the next state $x_{t+1}$ is computed as:
+\begin{subequations}
+    \begin{align}
+        k_1 &= f_c(x_t, u_t) \\
+        k_2 &= f_c(x_t + \frac{d_t}{2}k_1, u_t) \\
+        k_3 &= f_c(x_t + \frac{d_t}{2}k_2, u_t) \\
+        k_4 &= f_c(x_t + d_t k_3, u_t) \\
+        x_{t+1} &= x_t + \frac{d_t}{6}(k_1 + 2k_2 + 2k_3 + k_4)
+    \end{align}
+\end{subequations}
+This numeric integration method ensures robust stability and accuracy, facilitating the application of gradient-based optimization algorithms.
 
 
 
@@ -162,113 +158,211 @@ This discretized model serves as the foundation for the trajectory generation an
 
 
 
-\chapter{Trajectory Generation}
-\label{chap:generation}
+\chapter{Task 1 and 2: Trajectory Generation.}
+\label{chap:trajectory_generation}
 
-This chapter addresses the generation of optimal trajectories to maneuver the Acrobot from a stable hanging position to an unstable inverted position. [cite_start]We employ a Newton-type method for optimal control (Differential Dynamic Programming / Iterative LQR) to solve the nonlinear optimization problem[cite: 37].
+In this chapter, we address the core problem of trajectory generation: finding an optimal control sequence $u(t)$ and state trajectory $x(t)$ that transitions the Acrobot from a stable hanging position to the unstable upright equilibrium. We employ a Newton-type optimal control algorithm (specifically, Differential Dynamic Programming or Iterative LQR) to solve this non-linear optimization problem.
 
-\section{Computation of Equilibria}
-The first step involves identifying the start and end configurations. [cite_start]An equilibrium point $(x_{eq}, u_{eq})$ satisfies the condition $f_c(x_{eq}, u_{eq}) = 0$ (zero acceleration and zero velocity)[cite: 36].
-Using a numerical root-finding routine, we computed the following equilibria:
-\begin{itemize}
-    \item \textbf{Stable Equilibrium (Down):} $x_{eq1} = [0, 0, 0, 0]^\top$. The robot hangs vertically under gravity.
-    \item \textbf{Unstable Equilibrium (Up):} $x_{eq2} = [\pi, 0, 0, 0]^\top$. The robot is balanced perfectly upright.
-\end{itemize}
-Note that while the holding torque for the perfectly upright position is theoretically zero due to alignment with the gravity vector, the configuration is naturally unstable.
+The process is divided into three logical steps: computing the boundary conditions (equilibria), defining a reference trajectory to guide the solver, and executing the iterative optimization loop.
 
-\section{Task 1: Step Reference Trajectory}
-[cite_start]For the initial trajectory generation task, we define a reference curve composed of two long constant segments with a sharp transition, as suggested in the problem statement[cite: 39].
+
+\section{Step 1: Computation of Equilibria}
+
+The first requirement is to rigorously define the start and end points of the maneuver. An equilibrium is defined as a state where the system remains stationary if no external force is applied (or a constant holding torque is maintained). Mathematically, this implies that the acceleration and velocity are zero:
 \begin{equation}
-    x_{ref}(t) = \begin{cases} 
-    x_{eq1} & 0 \le t < T/2 \\
-    x_{eq2} & T/2 \le t \le T 
+    \ddot{q} = 0, \quad \dot{q} = 0 \implies \dot{x} = 0
+\end{equation}
+We must solve the static equation derived from the dynamics $f(x, u)$:
+\begin{equation}
+    f(x_{eq}, u_{eq}) = 0
+\end{equation}
+Given that the gravity vector $G(q)$ contains non-linear trigonometric terms ($\sin(\theta_1), \sin(\theta_1 + \theta_2)$), an analytical solution is non-trivial. Therefore, we employ a numerical root-finding algorithm to solve for the configuration angles.
+
+We identified two key equilibria:
+\begin{itemize}
+    \item \textbf{Stable Equilibrium ($x_{eq1}$):} The "Down" position where the robot hangs vertically under gravity ($x \approx [0, 0, 0, 0]^\top$).
+    \item \textbf{Unstable Equilibrium ($x_{eq2}$):} The "Up" position where the robot is balanced perfectly inverted ($x \approx [\pi, 0, 0, 0]^\top$).
+\end{itemize}
+
+
+
+\section{Step 2: Definition of Reference Curves}
+
+The optimization algorithm requires a reference trajectory $x_{ref}(t)$ to define the cost function. We explored two different approaches to generating this reference, highlighting the impact of physical consistency on solver convergence.
+
+\subsection{Task 1: The Step Reference}
+In the first approach, we define a "Step" reference. The time horizon $T$ is split into two halves:
+\begin{equation}
+    x_{ref}(t) = 
+    \begin{cases} 
+        x_{eq1} & \text{if } 0 \le t < T/2 \\
+        x_{eq2} & \text{if } T/2 \le t \le T 
     \end{cases}
 \end{equation}
-See Figure \ref{fig:ref_step} for the visualization of this reference.
+This reference commands the robot to stay at the bottom for the first half and immediately teleport to the top for the second half.
 
-\subsection{Newton-type Algorithm Implementation}
-We implemented the \textbf{Closed-Loop Newton's Method} (Iterative LQR). This algorithm iteratively improves the control sequence $u$ by minimizing a quadratic approximation of the cost function around the current trajectory.
-Crucially, the algorithm utilizes a ``closed-loop'' rollout policy during the line search phase:
-\begin{equation}
-    u_{new}(t) = u_{old}(t) + \alpha k(t) + K(t)(x_{new}(t) - x_{old}(t))
-\end{equation}
-where $K(t)$ is the feedback gain computed during the backward pass. [cite_start]This feedback term stabilizes the rollout of the unstable Acrobot dynamics, allowing the optimizer to converge significantly faster than standard open-loop shooting methods[cite: 37].
+\textbf{Limitations:} This creates a conflict between the \textit{optimization objective} and the \textit{system physics}. To reach the top, an underactuated robot must swing back and forth ("pump" energy). However, the cost function $J$ penalizes any deviation from zero during the first half. The solver is forced to fight this penalty to discover the necessary swinging motion, often resulting in slower convergence.
 
-To ensure robust descent, we implemented an \textbf{Armijo Line Search} mechanism. This verifies that the updated trajectory provides a sufficient decrease in the cost function $J$ relative to the step size $\alpha$ and the directional derivative.
+\subsection{Task 2: The "Natural" Smooth Reference}
+In the second approach, we construct a "Physically Inspired" reference that anticipates the system's dynamics. This reference is composed of two phases:
 
-% --- PLOT PLACEHOLDERS TASK 1 ---
-\begin{figure}[H]
-    \centering
-    % \includegraphics[width=0.8\textwidth]{figs/task1_optimal_traj}
-    \caption{Task 1: Optimal Trajectory vs. Step Reference. The robot performs a swing-up maneuver to match the step change.}
-    \label{fig:task1_traj}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    % \includegraphics[width=0.8\textwidth]{figs/task1_intermediate}
-    \caption{Task 1: Intermediate trajectories showing the iterative convergence of the Newton solver.}
-    \label{fig:task1_inter}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    % \includegraphics[width=0.8\textwidth]{figs/task1_armijo}
-    \caption{Armijo descent direction analysis and cost evolution (semi-log scale).}
-    \label{fig:task1_cost}
-\end{figure}
-
-\section{Task 2: Natural Reference Trajectory}
-[cite_start]In Task 2, we are required to perform the trajectory generation on a ``desired (smooth) state-input curve''[cite: 49].
-We observed that the sharp step reference in Task 1 creates a conflict between the cost function (which penalizes deviation from zero) and the system physics (which requires swinging to gain momentum).
-
-To resolve this, we designed a \textbf{Physically Inspired Reference} using a simplified model approximation:
 \begin{enumerate}
-    \item \textbf{Phase 1 (Energy Pumping):} We modeled the system as a simple pendulum to derive its natural frequency $\omega_n \approx \sqrt{g/L_{eff}}$. We injected sinusoidal oscillations at this frequency into the reference for the first half of the horizon. This encourages the solver to ``pump'' energy rather than fight the cost function.
-    \item \textbf{Phase 2 (Swing Up):} We utilized a smooth sigmoid function to transition the reference from the oscillating bottom state to the inverted equilibrium $x_{eq2}$, avoiding the infinite derivatives associated with a step change.
+    \item \textbf{Phase 1 (Energy Pumping):} We inject sinusoidal oscillations into the reference trajectory. The frequency of these oscillations is tuned to the natural frequency of a single-arm pendulum, approximated by the simplified model $\omega_n \approx \sqrt{g/L_{eff}}$. Where $g$ is the acceleration due to gravity ($g \approx 9.81$ m/s$^2$) and $L_{eff}$ is the effective length of the first part of the pendulum ($L_{eff} \approx L_1$).
+    \item \textbf{Phase 2 (Smooth Rise):} We utilize a sigmoid function (logistic curve) to transition smoothly from the oscillating bottom state to the inverted equilibrium, avoiding the infinite derivatives associated with a step change.
 \end{enumerate}
 
-This approach yields a reference trajectory that is more consistent with the underactuated dynamics of the system, facilitating easier tracking and convergence.
+\textbf{Advantages for Convergence:} By adding oscillations, we align the cost function with the physics. We effectively signal to the solver: \textit{"It is optimal to swing here."} This reduces the conflict between the objective function and the dynamic constraints, creating a smoother optimization landscape and facilitating faster, more robust convergence.
 
-% --- PLOT PLACEHOLDERS TASK 2 ---
-\begin{figure}[H]
-    \centering
-    % \includegraphics[width=0.8\textwidth]{figs/task2_optimal_traj}
-    \caption{Task 2: Optimal Trajectory tracking the ``Natural'' smooth reference (Oscillations + Sigmoid).}
-    \label{fig:task2_traj}
-\end{figure}
+\section{Step 3: The Optimization Loop}
 
-\begin{figure}[H]
-    \centering
-    % \includegraphics[width=0.8\textwidth]{figs/task2_cost_log}
-    \caption{Task 2: Cost evolution along iterations (semi-logarithmic scale).}
-    \label{fig:task2_cost}
-\end{figure}
+With the boundary conditions and reference defined, we implement the Newton-type optimal control algorithm. This is an iterative method that improves a control sequence $u$ by minimizing a quadratic approximation of the cost function. The process consists of three distinct phases per iteration.
 
+\subsection{Phase 1: Forward Pass (Simulation)}
+In the forward pass, we simulate the non-linear dynamics of the robot using the current control sequence. For the first iteration, we initialize with $u=0$ (passive dynamics).
+\begin{equation}
+    x_{t+1} = f(x_t, u_t), \quad t = 0, \dots, N-1
+\end{equation}
+This step generates the nominal trajectory $\bar{x}, \bar{u}$ around which we will linearize.
 
+\subsection{Phase 2: Backward Pass (Riccati Recursion)}
+This phase is the core of the Newton algorithm. We compute the optimal control modification by solving the problem backwards in time, from $t=N$ to $0$.
 
+First, we compute the derivatives of the dynamics ($A_t, B_t$) and the quadratic expansion of the cost function ($l_x, l_u, l_{xx}, l_{uu}$) around the nominal trajectory. We then define the \textbf{Action-Value Function} $Q(x, u)$, which represents the cost of taking action $u$ at state $x$ and acting optimally thereafter:
+\begin{equation}
+    Q(x, u) = L(x, u) + V_{next}(f(x, u))
+\end{equation}
+Applying the quadratic expansion, the gradients and Hessians of $Q$ are computed as:
+\begin{align}
+    Q_x &= l_x + A_t^\top V_x' \\
+    Q_u &= l_u + B_t^\top V_x' \\
+    Q_{xx} &= l_{xx} + A_t^\top V_{xx}' A_t \\
+    Q_{uu} &= l_{uu} + B_t^\top V_{xx}' B_t \\
+    Q_{ux} &= l_{ux} + B_t^\top V_{xx}' A_t
+\end{align}
+where $V'$ denotes the Value function at the next time step.
 
-\chapter{Trajectory Tracking via LQR}
-% Task 3: Linearization and LQR[cite: 50].
-We linearize the robot dynamics around the reference trajectory and implement an Infinite or Finite Horizon LQR controller to ensure robust tracking under perturbed initial conditions[cite: 51, 54].
+To find the optimal control modification $\delta u$, we minimize the quadratic model with respect to $u$:
+\begin{equation}
+    \frac{\partial Q}{\partial u} = Q_u + Q_{uu} \delta u + Q_{ux} \delta x = 0
+\end{equation}
+Solving for $\delta u$ yields the optimal control law consisting of a feedforward term $k$ and a feedback gain $K$:
+\begin{equation}
+    \delta u^* = \underbrace{-Q_{uu}^{-1} Q_u}_{k \text{ (Feedforward)}} + \underbrace{-Q_{uu}^{-1} Q_{ux}}_{K \text{ (Feedback)}} \delta x
+\end{equation}
+Finally, we update the Value function $V(x)$ for the previous time step to propagate the cost information backwards.
 
-\chapter{Trajectory Tracking via MPC}
-% Task 4: MPC implementation[cite: 60].
-This chapter discusses the implementation of Model Predictive Control (MPC) to track the optimal reference, accounting for system constraints and performance[cite: 61].
+\subsection{Phase 3: Update (Closed-Loop Rollout)}
+Once the gains $k$ and $K$ are computed, we apply them to generate the new control sequence. Crucially, we use a **Closed-Loop** update rule during the new forward simulation. 
 
+Instead of simply applying $u_{new} = u_{old} + \alpha k$, we calculate:
+\begin{equation}
+    u_{new}(t) = u_{old}(t) + \alpha \cdot k_t + K_t \cdot (x_{new}(t) - x_{old}(t))
+\end{equation}
+where $\alpha$ is a step size determined by an Armijo line search to ensure cost reduction.
+
+The inclusion of the feedback term $K_t (x_{new} - x_{old})$ is vital. Since the Acrobot is highly unstable, a purely open-loop update would cause the new trajectory to diverge exponentially from the linearized path, rendering the quadratic approximation invalid. The feedback term stabilizes the rollout, keeping the robot near the planned path and ensuring the convergence of the Newton algorithm.
+	\chapter{Trajectory Tracking via LQR}
+\section{Linearization around the Optimal Generated Trajectory}
+The optimal trajectory $(x^*_k, u^*_k)$ generated in the previous chapter serves as the nominal path. To handle disturbances and model uncertainties, we linearize the discrete-time dynamics $x_{k+1} = f_d(x_k, u_k)$ around this nominal trajectory:
+\begin{equation}
+    \delta x_{k+1} \approx A_k \delta x_k + B_k \delta u_k
+\end{equation}
+where $\delta x_k = x_k - x^*_k$, $\delta u_k = u_k - u^*_k$, and the Jacobian matrices are defined as:
+\begin{equation}
+    A_k = \frac{\partial f_d}{\partial x} \Big|_{x^*_k, u^*_k}, \quad B_k = \frac{\partial f_d}{\partial u} \Big|_{x^*_k, u^*_k}
+\end{equation}
+These Jacobians are computed numerically using finite differences to account for the complexity of the RK4 integration.
+
+\section{Discrete-Time Finite-Horizon LQR}
+We formulate a tracking problem to minimize the deviation from the nominal trajectory:
+\begin{equation}
+    \min_{\delta u_k} \sum_{k=0}^{N-1} (\delta x_k^\top Q \delta x_k + \delta u_k^\top R \delta u_k) + \delta x_N^\top Q_{final} \delta x_N
+\end{equation}
+The optimal control law is a time-varying linear feedback:
+\begin{equation}
+    \delta u_k = -K_k \delta x_k
+\end{equation}
+where the feedback gain $K_k$ is computed by solving the discrete-time Riccati difference equations backwards in time:
+\begin{subequations}
+    \begin{align}
+        P_N &= Q_{final} \\
+        K_k &= (R + B_k^\top P_{k+1} B_k)^{-1} B_k^\top P_{k+1} A_k \\
+        P_k &= Q + A_k^\top P_{k+1} A_k - A_k^\top P_{k+1} B_k K_k
+    \end{align}
+\end{subequations}
+The control input applied to the robot is then $u_k = u^*_k - K_k (x_k - x^*_k)$. This approach provides local stability and robust tracking performance.
+	
+	\chapter{Trajectory Tracking via MPC}
+	% Task 4: MPC implementation[cite: 60].
+	This chapter discusses the implementation of Model Predictive Control (MPC) to track the optimal reference, accounting for system constraints and performance[cite: 61].
+	
 \chapter{Results and Animation}
-% Task 5: Animation and required plots[cite: 63, 65].
-We present the simulation results, including the required semi-logarithmic plots for cost and descent directions[cite: 70, 71]. A link to the Python animation of the gymnast robot is also provided[cite: 64].
+\section{Simulation Environment}
+The performance of the proposed control strategies was evaluated in a simulated environment using the physical parameters specified in Table \ref{tab:params}. The simulation was initialized at the downward equilibrium and commanded to reach the inverted position.
 
-%%%%%%%%%% Conclusions %%%%%%%%%%
-\chapter*{Conclusions}
-\addcontentsline{toc}{chapter}{Conclusions} 
-% Summary of findings
+\section{Task 1: Trajectory Generation Performance}
+In this section, we analyze the convergence and optimality of the Newton-type optimization algorithm for the swing-up maneuver.
+% Placeholder for 10 plots Task 1
+\begin{figure}[H]
+    \centering
+    % Example of how to include 10 subfigures or a grid
+    \begin{tabular}{cc}
+        \textit{Plot 1-1} & \textit{Plot 1-2} \\
+        \textit{Plot 1-3} & \textit{Plot 1-4} \\
+        \textit{Plot 1-5} & \textit{Plot 1-6} \\
+        \textit{Plot 1-7} & \textit{Plot 1-8} \\
+        \textit{Plot 1-9} & \textit{Plot 1-10}
+    \end{tabular}
+    \caption{Performance metrics for Task 1 (Trajectory Generation).}
+    \label{fig:task1_plots}
+\end{figure}
 
-%%%%%%%%%% Bibliography %%%%%%%%%%%
-% Ensure bibfile.bib exists or use biblatex
-\addcontentsline{toc}{chapter}{Bibliography}
-\bibliographystyle{plain}
-\bibliography{bibfile}
+\section{Task 2: LQR Tracking Results}
+The effectiveness of the LQR controller in tracking the nominal swing-up trajectory is demonstrated through the following set of results.
+% Placeholder for 10 plots Task 2
+\begin{figure}[H]
+    \centering
+    \begin{tabular}{cc}
+        \textit{Plot 2-1} & \textit{Plot 2-2} \\
+        \textit{Plot 2-3} & \textit{Plot 2-4} \\
+        \textit{Plot 2-5} & \textit{Plot 2-6} \\
+        \textit{Plot 2-7} & \textit{Plot 2-8} \\
+        \textit{Plot 2-9} & \textit{Plot 2-10}
+    \end{tabular}
+    \caption{Tracking performance and error metrics for Task 2 (LQR Tracking).}
+    \label{fig:task2_plots}
+\end{figure}
 
+\section{Task 3: Robustness Analysis}
+A specific scenario evaluating the robustness of the controller is presented here.
+% Placeholder for 1 plot Task 3
+\begin{figure}[H]
+    \centering
+    \fbox{\phantom{\rule{0.4\textwidth}{0.3\textwidth}}} % Graphic placeholder
+    \caption{Robustness metric for Task 3.}
+    \label{fig:task3_plot}
+\end{figure}
+
+\section{Task 4: Comparative Study}
+Final comparison between the implemented control techniques.
+% Placeholder for 1 plot Task 4
+\begin{figure}[H]
+    \centering
+    \fbox{\phantom{\rule{0.4\textwidth}{0.3\textwidth}}} % Graphic placeholder
+    \caption{Comparative analysis for Task 4.}
+    \label{fig:task4_plot}
+\end{figure}
+
+\section{Animation}
+	%%%%%%%%%% Conclusions %%%%%%%%%%
+	\chapter*{Conclusions}
+	\addcontentsline{toc}{chapter}{Conclusions} 
+	% Summary of findings
+	
+	%%%%%%%%%% Bibliography %%%%%%%%%%%
+	% Ensure bibfile.bib exists or use biblatex
+	\addcontentsline{toc}{chapter}{Bibliography}
+	\bibliographystyle{plain}
+	\bibliography{bibfile}
+	
 \end{document}
