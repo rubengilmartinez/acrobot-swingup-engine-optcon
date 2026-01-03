@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.12.17)  30 DEC 2025 19:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.12.17)  3 JAN 2026 18:39
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -166,7 +166,8 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 ) (c:/texlive/2025/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count299
-) (./OPTCON_report_template_.aux)
+)
+No file OPTCON_report_template_.aux.
 \openout1 = `OPTCON_report_template_.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
@@ -183,7 +184,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
 LaTeX Font Info:    ... okay on input line 15.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
 LaTeX Font Info:    ... okay on input line 15.
- (c:/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+(c:/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count300
 \scratchdimen=\dimen161
@@ -211,44 +212,58 @@ Package pdftex.def Info: figs/logo_unibo.png  used on input line 27.
 
 {c:/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./figs/logo_unibo.png (PNG copy)>] [2
 
-] (./OPTCON_report_template_.toc
-LaTeX Font Info:    Trying to load font information for U+msa on input line 4.
- (c:/texlive/2025/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Trying to load font information for U+msb on input line 4.
- (c:/texlive/2025/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [3
-
-])
+]
+No file OPTCON_report_template_.toc.
 \tf@toc=\write3
 \openout3 = `OPTCON_report_template_.toc'.
 
- [4] (./OPTCON_report_template_.lof)
+[3
+
+]
+No file OPTCON_report_template_.lof.
 \tf@lof=\write4
 \openout4 = `OPTCON_report_template_.lof'.
 
- [5
+[4
 
-] [6
+] [5
 
-]
+{c:/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
 Chapter 1.
-[7
+LaTeX Font Info:    Trying to load font information for U+msa on input line 115.
+(c:/texlive/2025/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 115.
+ (c:/texlive/2025/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [6
 
-{c:/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] [8]
+] [7]
 Chapter 2.
-[9
+[8
 
-] [10] [11] [12]
+] [9]
+
+LaTeX Warning: Citation `Notarstefano2025' on page 10 undefined on input line 258.
+
+
+Overfull \hbox (1.23543pt too wide) in paragraph at lines 258--259
+\OT1/cmr/m/n/10.95 prox-i-mate the prob-lem by solv-ing a finite-horizon \OT1/cmr/bx/n/10.95 Affine Lin-ear Quadratic
+ []
+
+[10]
+
+LaTeX Warning: Citation `Notarstefano2025' on page 11 undefined on input line 307.
+
+[11] [12]
 Chapter 3.
 [13
 
 ] [14]
 Chapter 4.
 
-Overfull \hbox (7.8292pt too wide) in paragraph at lines 297--298
+Overfull \hbox (7.8292pt too wide) in paragraph at lines 406--407
 \OT1/cmr/m/n/10.95 This chap-ter dis-cusses the im-ple-men-ta-tion of Model Pre-dic-tive Con-trol (MPC)
  []
 
@@ -256,31 +271,441 @@ Overfull \hbox (7.8292pt too wide) in paragraph at lines 297--298
 
 ]
 Chapter 5.
+<../reports/figs/image.png, id=68, 224.5188pt x 224.5188pt>
+File: ../reports/figs/image.png Graphic file (type png)
+<use ../reports/figs/image.png>
+Package pdftex.def Info: ../reports/figs/image.png  used on input line 423.
+(pdftex.def)             Requested size: 161.9989pt x 161.9994pt.
+
+c:/Users/ruben/OneDrive/Escritorio/OC and RL/OPTCON_PROJECT/acrobot-swingup-engine-optcon/reports/OPTCON_report_template_.tex:423: LaTeX Error: File `figs/task1_optimal_q2' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.423 ...th=0.45\textwidth]{figs/task1_optimal_q2}
+                                                   \\
+I could not locate the file with any of these extensions:
+.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+c:/Users/ruben/OneDrive/Escritorio/OC and RL/OPTCON_PROJECT/acrobot-swingup-engine-optcon/reports/OPTCON_report_template_.tex:425: LaTeX Error: File `figs/task1_intermediate_q1' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.425 ...45\textwidth]{figs/task1_intermediate_q1}
+                                                   & \includegraphics[width=...
+I could not locate the file with any of these extensions:
+.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+c:/Users/ruben/OneDrive/Escritorio/OC and RL/OPTCON_PROJECT/acrobot-swingup-engine-optcon/reports/OPTCON_report_template_.tex:425: LaTeX Error: File `figs/task1_intermediate_q2' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.425 ...45\textwidth]{figs/task1_intermediate_q2}
+                                                   \\
+I could not locate the file with any of these extensions:
+.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+c:/Users/ruben/OneDrive/Escritorio/OC and RL/OPTCON_PROJECT/acrobot-swingup-engine-optcon/reports/OPTCON_report_template_.tex:427: LaTeX Error: File `figs/task1_armijo_initial' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.427 ....45\textwidth]{figs/task1_armijo_initial}
+                                                   & \includegraphics[width=...
+I could not locate the file with any of these extensions:
+.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+c:/Users/ruben/OneDrive/Escritorio/OC and RL/OPTCON_PROJECT/acrobot-swingup-engine-optcon/reports/OPTCON_report_template_.tex:427: LaTeX Error: File `figs/task1_armijo_final' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.427 ...=0.45\textwidth]{figs/task1_armijo_final}
+                                                   \\
+I could not locate the file with any of these extensions:
+.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+c:/Users/ruben/OneDrive/Escritorio/OC and RL/OPTCON_PROJECT/acrobot-swingup-engine-optcon/reports/OPTCON_report_template_.tex:429: LaTeX Error: File `figs/task1_norm_log' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.429 ...idth=0.45\textwidth]{figs/task1_norm_log}
+                                                   & \includegraphics[width=...
+I could not locate the file with any of these extensions:
+.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+c:/Users/ruben/OneDrive/Escritorio/OC and RL/OPTCON_PROJECT/acrobot-swingup-engine-optcon/reports/OPTCON_report_template_.tex:429: LaTeX Error: File `figs/task1_cost_log' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.429 ...idth=0.45\textwidth]{figs/task1_cost_log}
+                                                   \\
+I could not locate the file with any of these extensions:
+.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+c:/Users/ruben/OneDrive/Escritorio/OC and RL/OPTCON_PROJECT/acrobot-swingup-engine-optcon/reports/OPTCON_report_template_.tex:431: LaTeX Error: File `figs/task1_control_input' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.431 ...0.45\textwidth]{figs/task1_control_input}
+                                                   & \includegraphics[width=...
+I could not locate the file with any of these extensions:
+.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+c:/Users/ruben/OneDrive/Escritorio/OC and RL/OPTCON_PROJECT/acrobot-swingup-engine-optcon/reports/OPTCON_report_template_.tex:431: LaTeX Error: File `figs/task1_phase_plot' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.431 ...th=0.45\textwidth]{figs/task1_phase_plot}
+                                                   \\
+I could not locate the file with any of these extensions:
+.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (3.02414pt too wide) in paragraph at lines 422--434
+ [][] 
+ []
+
 [16
 
-] [17]
-No file OPTCON_report_template_.bbl.
-[18
+] [17 <../reports/figs/image.png>]
+
+c:/Users/ruben/OneDrive/Escritorio/OC and RL/OPTCON_PROJECT/acrobot-swingup-engine-optcon/reports/OPTCON_report_template_.tex:445: LaTeX Error: File `figs/task2_optimal_q1' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.445 ...th=0.45\textwidth]{figs/task2_optimal_q1}
+                                                   & \includegraphics[width=...
+I could not locate the file with any of these extensions:
+.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+c:/Users/ruben/OneDrive/Escritorio/OC and RL/OPTCON_PROJECT/acrobot-swingup-engine-optcon/reports/OPTCON_report_template_.tex:445: LaTeX Error: File `figs/task2_optimal_q2' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.445 ...th=0.45\textwidth]{figs/task2_optimal_q2}
+                                                   \\
+I could not locate the file with any of these extensions:
+.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+c:/Users/ruben/OneDrive/Escritorio/OC and RL/OPTCON_PROJECT/acrobot-swingup-engine-optcon/reports/OPTCON_report_template_.tex:447: LaTeX Error: File `figs/task2_intermediate_q1' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.447 ...45\textwidth]{figs/task2_intermediate_q1}
+                                                   & \includegraphics[width=...
+I could not locate the file with any of these extensions:
+.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+c:/Users/ruben/OneDrive/Escritorio/OC and RL/OPTCON_PROJECT/acrobot-swingup-engine-optcon/reports/OPTCON_report_template_.tex:447: LaTeX Error: File `figs/task2_intermediate_q2' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.447 ...45\textwidth]{figs/task2_intermediate_q2}
+                                                   \\
+I could not locate the file with any of these extensions:
+.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+c:/Users/ruben/OneDrive/Escritorio/OC and RL/OPTCON_PROJECT/acrobot-swingup-engine-optcon/reports/OPTCON_report_template_.tex:449: LaTeX Error: File `figs/task2_armijo_initial' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.449 ....45\textwidth]{figs/task2_armijo_initial}
+                                                   & \includegraphics[width=...
+I could not locate the file with any of these extensions:
+.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+c:/Users/ruben/OneDrive/Escritorio/OC and RL/OPTCON_PROJECT/acrobot-swingup-engine-optcon/reports/OPTCON_report_template_.tex:449: LaTeX Error: File `figs/task2_armijo_final' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.449 ...=0.45\textwidth]{figs/task2_armijo_final}
+                                                   \\
+I could not locate the file with any of these extensions:
+.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+c:/Users/ruben/OneDrive/Escritorio/OC and RL/OPTCON_PROJECT/acrobot-swingup-engine-optcon/reports/OPTCON_report_template_.tex:451: LaTeX Error: File `figs/task2_norm_log' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.451 ...idth=0.45\textwidth]{figs/task2_norm_log}
+                                                   & \includegraphics[width=...
+I could not locate the file with any of these extensions:
+.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+c:/Users/ruben/OneDrive/Escritorio/OC and RL/OPTCON_PROJECT/acrobot-swingup-engine-optcon/reports/OPTCON_report_template_.tex:451: LaTeX Error: File `figs/task2_cost_log' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.451 ...idth=0.45\textwidth]{figs/task2_cost_log}
+                                                   \\
+I could not locate the file with any of these extensions:
+.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+c:/Users/ruben/OneDrive/Escritorio/OC and RL/OPTCON_PROJECT/acrobot-swingup-engine-optcon/reports/OPTCON_report_template_.tex:453: LaTeX Error: File `figs/task2_control_input' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.453 ...0.45\textwidth]{figs/task2_control_input}
+                                                   & \includegraphics[width=...
+I could not locate the file with any of these extensions:
+.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+c:/Users/ruben/OneDrive/Escritorio/OC and RL/OPTCON_PROJECT/acrobot-swingup-engine-optcon/reports/OPTCON_report_template_.tex:453: LaTeX Error: File `figs/task2_phase_plot' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.453 ...th=0.45\textwidth]{figs/task2_phase_plot}
+                                                   \\
+I could not locate the file with any of these extensions:
+.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (1.07408pt too wide) in paragraph at lines 444--456
+ [][] 
+ []
+
+[18]
+
+c:/Users/ruben/OneDrive/Escritorio/OC and RL/OPTCON_PROJECT/acrobot-swingup-engine-optcon/reports/OPTCON_report_template_.tex:468: LaTeX Error: File `figs/task3_system_vs_desired' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.468 ...\textwidth]{figs/task3_system_vs_desired}
+                                                   \\
+I could not locate the file with any of these extensions:
+.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+c:/Users/ruben/OneDrive/Escritorio/OC and RL/OPTCON_PROJECT/acrobot-swingup-engine-optcon/reports/OPTCON_report_template_.tex:474: LaTeX Error: File `figs/task3_error_p1' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.474 ...idth=0.31\textwidth]{figs/task3_error_p1}
+                                                   & \includegraphics[width=...
+I could not locate the file with any of these extensions:
+.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+c:/Users/ruben/OneDrive/Escritorio/OC and RL/OPTCON_PROJECT/acrobot-swingup-engine-optcon/reports/OPTCON_report_template_.tex:474: LaTeX Error: File `figs/task3_error_p2' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.474 ...idth=0.31\textwidth]{figs/task3_error_p2}
+                                                   & \includegraphics[width=...
+I could not locate the file with any of these extensions:
+.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+c:/Users/ruben/OneDrive/Escritorio/OC and RL/OPTCON_PROJECT/acrobot-swingup-engine-optcon/reports/OPTCON_report_template_.tex:474: LaTeX Error: File `figs/task3_error_p3' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.474 ...idth=0.31\textwidth]{figs/task3_error_p3}
+                                                   \\
+I could not locate the file with any of these extensions:
+.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (54.8401pt too wide) in paragraph at lines 473--477
+[]  
+ []
+
+
+c:/Users/ruben/OneDrive/Escritorio/OC and RL/OPTCON_PROJECT/acrobot-swingup-engine-optcon/reports/OPTCON_report_template_.tex:489: LaTeX Error: File `figs/task4_system_vs_desired' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.489 ...\textwidth]{figs/task4_system_vs_desired}
+                                                   \\
+I could not locate the file with any of these extensions:
+.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+c:/Users/ruben/OneDrive/Escritorio/OC and RL/OPTCON_PROJECT/acrobot-swingup-engine-optcon/reports/OPTCON_report_template_.tex:495: LaTeX Error: File `figs/task4_error_p1' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.495 ...idth=0.31\textwidth]{figs/task4_error_p1}
+                                                   & \includegraphics[width=...
+I could not locate the file with any of these extensions:
+.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+c:/Users/ruben/OneDrive/Escritorio/OC and RL/OPTCON_PROJECT/acrobot-swingup-engine-optcon/reports/OPTCON_report_template_.tex:495: LaTeX Error: File `figs/task4_error_p2' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.495 ...idth=0.31\textwidth]{figs/task4_error_p2}
+                                                   & \includegraphics[width=...
+I could not locate the file with any of these extensions:
+.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+c:/Users/ruben/OneDrive/Escritorio/OC and RL/OPTCON_PROJECT/acrobot-swingup-engine-optcon/reports/OPTCON_report_template_.tex:495: LaTeX Error: File `figs/task4_error_p3' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.495 ...idth=0.31\textwidth]{figs/task4_error_p3}
+                                                   \\
+I could not locate the file with any of these extensions:
+.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (54.8401pt too wide) in paragraph at lines 494--498
+[]  
+ []
+
+[19] (./OPTCON_report_template_.bbl) [20
 
 ] (./OPTCON_report_template_.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-11-14>
  ***********
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
- 3985 strings out of 467538
- 62449 string characters out of 5423724
- 480635 words of memory out of 5000000
- 32847 multiletter control sequences out of 15000+600000
- 636438 words of font info for 71 fonts, out of 8000000 for 9000
+ 4811 strings out of 467538
+ 88951 string characters out of 5423724
+ 481486 words of memory out of 5000000
+ 33675 multiletter control sequences out of 15000+600000
+ 636606 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,11n,65p,623b,265s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on OPTCON_report_template_.pdf (18 pages, 293555 bytes).
+ 57i,13n,65p,673b,332s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
+Output written on OPTCON_report_template_.pdf (20 pages, 502068 bytes).
 PDF statistics:
- 144 PDF objects out of 1000 (max. 8388607)
- 90 compressed objects within 1 object stream
+ 159 PDF objects out of 1000 (max. 8388607)
+ 99 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
