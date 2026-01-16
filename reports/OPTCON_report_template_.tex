@@ -253,9 +253,9 @@ In the second approach, we construct a "Physically Inspired" reference that anti
 
 
 
-\section{Step 3: The Optimization Loop (Newton via Affine LQR)}
+\section{Step 3: The Optimization Loop (Newton via LQR)}
 
-With the boundary conditions and reference defined, we implement the Newton-type optimal control algorithm. In every iteration $k$, we locally approximate the problem by solving a finite-horizon \textbf{Affine Linear Quadratic Regulator (LQR)} problem to find the optimal control deviation, this sequence of solved subproblems forms the Newton-type update. \cite{Notarstefano2025}.
+With the boundary conditions and reference defined, we implement the Newton-type optimal control algorithm. In every iteration $k$, we locally approximate the problem by solving a finite-horizon \textbf{Linear Quadratic Regulator (LQR)} problem to find the optimal control deviation, this sequence of solved subproblems forms the Newton-type update. \cite{Notarstefano2025}.
 
 The process consists of three distinct phases. Below, we detail the mathematical formulation and provide a direct mapping to the variables used in our Python implementation.
 
@@ -270,7 +270,7 @@ We simulate the non-linear dynamics using the current control sequence $\bar{u}$
     \item $f(\cdot) \rightarrow$ \texttt{discrete\_step\_rk4(x, u, dt)}
 \end{itemize}
 
-\subsection{Phase 2: Backward Pass (Solving Affine LQR)}
+\subsection{Phase 2: Backward Pass (Solving LQR)}
 This phase computes the feedback gains and feedforward corrections by propagating the computation of the Riccati difference equations backwards in time.
 
 \subsubsection*{1. Initialization ($t=T$)}
@@ -319,7 +319,8 @@ We calculate the optimal \textbf{Feedback Gain} $K_t^*$ and \textbf{Feedforward 
 Finally, we update the Cost-to-Go parameters ($P_t, p_t$) for the previous time step. In the code, we utilize the computed gains to perform this update efficiently:
 \begin{align}
     P_t &= Q_t + A_t^\top P_{t+1} A_t - K_t^{*\top} S_t K_t^* \\
-    p_t &= q_t + A_t^\top p_{t+1} - K_t^{*\top} S_t \sigma_t^*
+    p_t &= q_t + A_t^\top p_{t+1} - K_t^{*\top} S_t \sigma_t^* \\
+    c_t &= 0
 \end{align}
 \textbf{Code Mapping:}
 \begin{itemize}
@@ -359,36 +360,48 @@ The feedback term $K_t^*$ stabilizes the unstable Acrobot dynamics during the ro
 
 \chapter{Task 3: Trajectory Tracking via LQR}
 
-
 \section{Linearization around the Optimal Generated Trajectory}
-The optimal trajectory $(x^*_k, u^*_k)$ generated in the previous chapter serves as the nominal path. To handle disturbances and model uncertainties, we linearize the discrete-time dynamics $x_{k+1} = f_d(x_k, u_k)$ around this nominal trajectory:
+The optimal trajectory $(x^*_t, u^*_t)$ generated in the previous chapter serves as the nominal path. To handle disturbances and model uncertainties, we linearize the discrete-time dynamics $x_{t+1} = f_d(x_t, u_t)$ around this nominal trajectory at each time step. This produces a time-varying linear approximation of the system that is locally valid for small deviations from the reference trajectory:
 \begin{equation}
-    \delta x_{k+1} \approx A_k \delta x_k + B_k \delta u_k
+    \delta x_{t+1} \approx A_t^{\text{traj}} \delta x_t + B_t^{\text{traj}} \delta u_t
 \end{equation}
-where $\delta x_k = x_k - x^*_k$, $\delta u_k = u_k - u^*_k$, and the Jacobian matrices are defined as:
+where $\delta x_t = x_t - x^*_t$, $\delta u_t = u_t - u^*_t$, and the Jacobian matrices are defined as:
 \begin{equation}
-    A_k = \frac{\partial f_d}{\partial x} \Big|_{x^*_k, u^*_k}, \quad B_k = \frac{\partial f_d}{\partial u} \Big|_{x^*_k, u^*_k}
+    A_t^{\text{traj}} = \frac{\partial f_d}{\partial x} \Big|_{x^*_t, u^*_t}, \quad B_t^{\text{traj}} = \frac{\partial f_d}{\partial u} \Big|_{x^*_t, u^*_t}
 \end{equation}
 These Jacobians are computed numerically using finite differences to account for the complexity of the RK4 integration.
 
-\section{Discrete-Time Finite-Horizon LQR}
-We formulate a tracking problem to minimize the deviation from the nominal trajectory:
+\section{Discrete-Time Finite-Horizon TV-LQR Optimization}
+The core of the tracking problem is formulated as an optimization task over a finite time horizon $T$. Given the nominal trajectory $(x^*_t, u^*_t)$, we define the tracking error states $\delta x_t = x_t - x^*_t$ and control deviations $\delta u_t = u_t - u^*_t$. The goal is to find an optimal sequence of control deviations that minimizes a quadratic cost function:
 \begin{equation}
-    \min_{\delta u_k} \sum_{k=0}^{N-1} (\delta x_k^\top Q \delta x_k + \delta u_k^\top R \delta u_k) + \delta x_N^\top Q_{final} \delta x_N
+    \sum_{t=0}^{T-1} (\delta x_t^\top Q_{\text{reg}} \delta x_t + \delta u_t^\top R_{\text{reg}} \delta u_t) + \delta x_T^\top Q_{\text{final}} \delta x_T
 \end{equation}
-The optimal control law is a time-varying linear feedback:
-\begin{equation}
-    \delta u_k = -K_k \delta x_k
-\end{equation}
-where the feedback gain $K_k$ is computed by solving the discrete-time Riccati difference equations backwards in time:
+subject to the linearized dynamics $\delta x_{t+1} = A_t^\text{traj} \delta x_t + B_t^\text{traj} \delta u_t$.
+
+\quad
+
+The solution to this problem is obtained via dynamic programming, specifically by solving the discrete-time Riccati difference equations backwards in time. This process yields a sequence of optimal cost-to-go matrices $P_t$, which are used to compute the feedback gains.
+
+\section{Implementation of the Time-Varying Feedback Controller}
+A crucial aspect of our implementation is the separation between the optimization phase (computing gains) and the control phase (applying the feedback law).
+
+\subsection{Phase 1: Computation of Optimal Feedback Gains}
+Before starting the tracking experiment, we perform a backward pass from $t = T$ down to $t = 0$. In this phase, we pre-compute and store the optimal feedback gains $K_t$ for every time step:
 \begin{subequations}
     \begin{align}
-        P_N &= Q_{final} \\
-        K_k &= (R + B_k^\top P_{k+1} B_k)^{-1} B_k^\top P_{k+1} A_k \\
-        P_k &= Q + A_k^\top P_{k+1} A_k - A_k^\top P_{k+1} B_k K_k
+        P_T &= Q_{\text{final}} \\
+        K^{\text{reg}}_t &= (R_{\text{reg}} + B_t^{\text{traj, T}} P_{t+1} B_t^{\text{traj}})^{-1} (B_t^{\text{traj, T}} P_{t+1} A_t^{\text{traj}}) \\
+        P_t &= Q_{\text{reg}} + A_t^{\text{traj}, T}P_{t+1} A_t^{\text{traj}} - (A_t^{\text{traj}, T}P_{t+1} B_t^{\text{traj}}) K^{\text{reg}}_t
     \end{align}
 \end{subequations}
-The control input applied to the robot is then $u_k = u^*_k - K_k (x_k - x^*_k)$. This approach provides local stability and robust tracking performance.
+This pre-computation ensures that the controller can operate in real-time during the forward simulation, as the heavy matrix operations are already solved.
+
+\subsection{Phase 2: State Feedback Control Law}
+Once the gains $K_t$ are available, the physical system (or the high-fidelity RK4 simulator) is controlled using a combination of feedforward and feedback terms. At each sampling instant $t$, the controller measures the actual state $x_t$, computes the error $\delta x_t$, and applies the following control command:
+\begin{equation}
+    u_t = u^{traj}_t - K^{reg}_t (x_t - x^{traj}_t), \quad t=0,\ldots,T-1
+\end{equation}
+Here, $u^{traj}_t$ acts as the \textit{feedforward} nominal torque required to maintain the ideal trajectory, while the term $- K_t \delta x_t$ provides the \textit{feedback} corrective action. This dual structure allows the Acrobot to stay close to the optimized swing-up path even when faced with initial condition perturbations or unmodeled dynamics, leveraging the local optimality of the LQR design.
 	
 
 
@@ -420,42 +433,57 @@ Performance metrics for the iLQR algorithm using a simple step reference.
 \begin{figure}[H]
     \centering
     \begin{tabular}{cc}
-        \includegraphics[width=0.45\textwidth]{../reports/figs/image.png} & \includegraphics[width=0.45\textwidth]{figs/task1_optimal_q2} \\
-        (a) Optimal vs Desired ($q_1$) & (b) Optimal vs Desired ($q_2$) \\[2ex]
-        \includegraphics[width=0.45\textwidth]{figs/task1_intermediate_q1} & \includegraphics[width=0.45\textwidth]{figs/task1_intermediate_q2} \\
-        (c) Intermediate Trajectories ($q_1$) & (d) Intermediate Trajectories ($q_2$) \\[2ex]
-        \includegraphics[width=0.45\textwidth]{figs/task1_armijo_initial} & \includegraphics[width=0.45\textwidth]{figs/task1_armijo_final} \\
-        (e) Armijo Direction (Initial) & (f) Armijo Direction (Final) \\[2ex]
-        \includegraphics[width=0.45\textwidth]{figs/task1_norm_log} & \includegraphics[width=0.45\textwidth]{figs/task1_cost_log} \\
-        (g) Norm of Descent (Log Scale) & (h) Cost along Iterations (Log Scale) \\[2ex]
-        \includegraphics[width=0.45\textwidth]{figs/task1_control_input} & \includegraphics[width=0.45\textwidth]{figs/task1_phase_plot} \\
-        (i) Optimal Control $u(t)$ & (j) Phase Portrait \\
+        \includegraphics[width=0.50\textwidth]{figs/output_task1_opt_des_traj.png} & \includegraphics[width=0.50\textwidth]{figs/output_task1_intermediate.png} \\
+        (a) Optimal vs Desired Trajectories & (b) Intermediate Trajectories \\[2ex]
+        \includegraphics[width=0.50\textwidth]{figs/output_task1_norm_descent.png} & \includegraphics[width=0.50\textwidth]{figs/output_task1_cost_evolution.png} \\
+        (c) Norm of Descent (Semi-Log) & (d) Cost Evolution (Semi-Log)
     \end{tabular}
-    \caption{Trajectory Generation Results for Task 1: 10 required plots illustrating convergence and optimality.}
-    \label{fig:task1_plots}
+    \caption{Task 1: Trajectories and Convergence Metrics.}
+    \label{fig:task1_convergence}
 \end{figure}
 
-\newpage
+\begin{figure}[H]
+    \centering
+    \begin{tabular}{cc}
+        \includegraphics[width=0.50\textwidth]{figs/output_task1_1.png} & \includegraphics[width=0.50\textwidth]{figs/output_task1_2.png} \\
+        (a) Armijo Landscape (Iter 0) & (b) Armijo Landscape (Iter 1) \\[2ex]
+        \includegraphics[width=0.50\textwidth]{figs/output_task1_3.png} & \includegraphics[width=0.50\textwidth]{figs/output_task1_6.png} \\
+        (c) Armijo Landscape (Iter 10) & (d) Armijo Landscape (Iter 40)
+    \end{tabular}
+    \caption{Task 1: Armijo Landscapes across iterations.}
+    \label{fig:task1_armijo}
+\end{figure}
+
+
+
 \section{Task 2: Trajectory Generation (Smooth Reference)}
 \label{sec:task2_results}
 Comparison of the iLQR performance when initiated with a physically-inspired smooth reference.
 \begin{figure}[H]
     \centering
     \begin{tabular}{cc}
-        \includegraphics[width=0.45\textwidth]{figs/task2_optimal_q1} & \includegraphics[width=0.45\textwidth]{figs/task2_optimal_q2} \\
-        (a) Optimal vs Desired ($q_1$) & (b) Optimal vs Desired ($q_2$) \\[2ex]
-        \includegraphics[width=0.45\textwidth]{figs/task2_intermediate_q1} & \includegraphics[width=0.45\textwidth]{figs/task2_intermediate_q2} \\
-        (c) Intermediate Trajectories ($q_1$) & (d) Intermediate Trajectories ($q_2$) \\[2ex]
-        \includegraphics[width=0.45\textwidth]{figs/task2_armijo_initial} & \includegraphics[width=0.45\textwidth]{figs/task2_armijo_final} \\
-        (e) Armijo Direction (Initial) & (f) Armijo Direction (Final) \\[2ex]
-        \includegraphics[width=0.45\textwidth]{figs/task2_norm_log} & \includegraphics[width=0.45\textwidth]{figs/task2_cost_log} \\
-        (g) Norm of Descent (Log Scale) & (h) Cost along Iterations (Log Scale) \\[2ex]
-        \includegraphics[width=0.45\textwidth]{figs/task2_control_input} & \includegraphics[width=0.45\textwidth]{figs/task2_phase_plot} \\
-        (i) Optimal Control $u(t)$ & (j) Phase Portrait \\
+        \includegraphics[width=0.50\textwidth]{figs/output_task2_opt_des_traj.png} & \includegraphics[width=0.50\textwidth]{figs/output_task2_intermediate.png} \\
+        (a) Optimal vs Desired Trajectories & (b) Intermediate Trajectories \\[2ex]
+        \includegraphics[width=0.50\textwidth]{figs/output_task2_norm_descent.png} & \includegraphics[width=0.50\textwidth]{figs/output_task2_cost_evolution.png} \\
+        (c) Norm of Descent (Semi-Log) & (d) Cost Evolution (Semi-Log)
     \end{tabular}
-    \caption{Trajectory Generation Results for Task 2: 10 required plots illustrating improved convergence with smooth reference.}
-    \label{fig:task2_plots}
+    \caption{Task 2: Trajectories and Convergence Metrics.}
+    \label{fig:task2_convergence}
 \end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{tabular}{cc}
+        \includegraphics[width=0.50\textwidth]{figs/output_task2_1.png} & \includegraphics[width=0.50\textwidth]{figs/output_task2_2.png} \\
+        (a) Armijo Landscape (Iter 0) & (b) Armijo Landscape (Iter 1) \\[2ex]
+        \includegraphics[width=0.50\textwidth]{figs/output_task2_3.png} & \includegraphics[width=0.50\textwidth]{figs/output_task2_6.png} \\
+        (c) Armijo Landscape (Iter 10) & (d) Armijo Landscape (Iter 40)
+    \end{tabular}
+    \caption{Task 2: Armijo Landscapes across iterations.}
+    \label{fig:task2_armijo}
+\end{figure}
+
+
 
 \newpage
 \section{Task 3: LQR Tracking Performance}
@@ -463,42 +491,28 @@ Comparison of the iLQR performance when initiated with a physically-inspired smo
 Tracking capability of the Time-Varying LQR controller under different initial condition perturbations.
 \begin{figure}[H]
     \centering
-    \begin{minipage}{\textwidth}
-        \centering
-        \includegraphics[width=0.7\textwidth]{figs/task3_system_vs_desired} \\
-        (a) System Trajectory vs Desired Optimal Trajectory
-    \end{minipage}
-    \vspace{1em}
-    \begin{flushleft}
-    \begin{tabular}{ccc}
-        \includegraphics[width=0.31\textwidth]{figs/task3_error_p1} & \includegraphics[width=0.31\textwidth]{figs/task3_error_p2} & \includegraphics[width=0.31\textwidth]{figs/task3_error_p3} \\
-        (b) Error (Perturbation 1) & (c) Error (Perturbation 2) & (d) Error (Perturbation 3)
-    \end{tabular}
-    \end{flushleft}
-    \caption{LQR Tracking Results: System behavior and error analysis for different initial conditions.}
-    \label{fig:task3_tracking}
+    \includegraphics[width=0.85\textwidth]{figs/output_task3_1.png} \\
+    (a) System Trajectory vs Desired Optimal Trajectory
+    \caption{Task 3: System Trajectory vs Desired Optimal Trajectory.}
+    \label{fig:task3_trajectory}
 \end{figure}
 
-\section{Task 4: MPC Tracking Performance}
-\label{sec:task4_results}
-Performance of the Model Predictive Controller in tracking the reference trajectory.
 \begin{figure}[H]
     \centering
-    \begin{minipage}{\textwidth}
-        \centering
-        \includegraphics[width=0.7\textwidth]{figs/task4_system_vs_desired} \\
-        (a) System Trajectory vs Desired Optimal Trajectory
-    \end{minipage}
-    \vspace{1em}
-    \begin{flushleft}
-    \begin{tabular}{ccc}
-        \includegraphics[width=0.31\textwidth]{figs/task4_error_p1} & \includegraphics[width=0.31\textwidth]{figs/task4_error_p2} & \includegraphics[width=0.31\textwidth]{figs/task4_error_p3} \\
-        (b) Error (Perturbation 1) & (c) Error (Perturbation 2) & (d) Error (Perturbation 3)
+    \begin{tabular}{cc}
+        \includegraphics[width=0.55\textwidth]{figs/output_task3_2.png} & \includegraphics[width=0.55\textwidth]{figs/output_task3_3.png} \\
+        (b) Tracking Error ([0.5, -0.3, 0, 0]) & (c) Tracking Error ([0, 0, 0.5, -0.5]) \\[3ex]
     \end{tabular}
-    \end{flushleft}
-    \caption{MPC Tracking Results: System behavior and error analysis for different initial conditions.}
-    \label{fig:task4_tracking}
+    
+    \begin{tabular}{c}
+        \includegraphics[width=0.55\textwidth]{figs/output_task3_4.png} \\
+        (d) Tracking Error ([-0.2, 0.2, 0.1, -0.1])
+    \end{tabular}
+    \caption{Task 3: LQR Tracking Errors for different initial condition perturbations.}
+    \label{fig:task3_errors}
 \end{figure}
+
+% Task 4 results omitted as per user request (plots not available).
 
 \section{Animation}
 	%%%%%%%%%% Conclusions %%%%%%%%%%

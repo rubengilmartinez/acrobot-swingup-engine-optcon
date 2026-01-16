@@ -4,7 +4,9 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Trajectory Generation Results for Task 1: 10 required plots illustrating convergence and optimality.}}{17}{}%
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Trajectory Generation Results for Task 2: 10 required plots illustrating improved convergence with smooth reference.}}{18}{}%
-\contentsline {figure}{\numberline {5.3}{\ignorespaces LQR Tracking Results: System behavior and error analysis for different initial conditions.}}{19}{}%
-\contentsline {figure}{\numberline {5.4}{\ignorespaces MPC Tracking Results: System behavior and error analysis for different initial conditions.}}{19}{}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Task 1: Trajectories and Convergence Metrics.}}{19}{}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Task 1: Armijo Landscapes across iterations.}}{20}{}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Task 2: Trajectories and Convergence Metrics.}}{21}{}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Task 2: Armijo Landscapes across iterations.}}{22}{}%
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Task 3: System Trajectory vs Desired Optimal Trajectory.}}{23}{}%
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Task 3: LQR Tracking Errors for different initial condition perturbations.}}{24}{}%
