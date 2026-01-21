@@ -2,67 +2,137 @@
 \providecommand \babel@aux [2]{\global \let \babel@toc \@gobbletwo }
 \@nameuse{bbl@beforestart}
 \babel@aux{english}{}
-\@writefile{toc}{\contentsline {chapter}{Introduction}{6}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {1}Task 0: Problem Setup and Discretization}{7}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{Introduction}{7}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {1}Task 0: Problem Setup and Discretization}{8}{}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {1.1}System Description}{7}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {1.2}Equations of Motion}{7}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {1.3}Physical Parameters}{8}{}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {1.1}{\ignorespaces Acrobot Physical Parameters (Set 3)}}{8}{}\protected@file@percent }
-\newlabel{tab:params}{{1.1}{8}{}{table.1.1}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {1.4}Discretization via Runge-Kutta 4}{8}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {2}Task 1 and 2: Trajectory Generation.}{9}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {1.1}System Description}{8}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {1.2}Equations of Motion}{8}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {1.3}Physical Parameters}{9}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1.1}{\ignorespaces Acrobot Physical Parameters (Set 3)}}{9}{}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{tab:params}{{1.1}{9}{}{table.1.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {1.4}Discretization via Runge-Kutta 4}{9}{}\protected@file@percent }
+\citation{Notarstefano2025Trajectory}
+\@writefile{toc}{\contentsline {chapter}{\numberline {2}Task 1 and 2: Trajectory Generation.}{10}{}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{chap:trajectory_generation}{{2}{9}{}{chapter.2}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {2.1}Step 1: Computation of Equilibria}{9}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {2.2}Step 2: Definition of Reference Curves}{10}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.1}Task 1: The Step Reference}{10}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.2}Task 2: The "Natural" Smooth Reference}{10}{}\protected@file@percent }
+\newlabel{chap:trajectory_generation}{{2}{10}{}{chapter.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.1}Step 1: Computation of Equilibria}{10}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2.2}Step 2: Definition of Reference Curves}{11}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.1}Task 1: The Step Reference}{11}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.2}Task 2: The "Natural" Smooth Reference}{11}{}\protected@file@percent }
 \citation{Notarstefano2025}
-\@writefile{toc}{\contentsline {section}{\numberline {2.3}Step 3: The Optimization Loop (Newton via LQR)}{11}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.1}Phase 1: Forward Pass (Nominal Trajectory)}{11}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.2}Phase 2: Backward Pass (Solving LQR)}{11}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2.3}Step 3: The Optimization Loop (Newton via iLQR)}{12}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.1}Phase 1: Forward Pass (Nominal Trajectory)}{12}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.2}Phase 2: Backward Pass (Solving LQR Affine)}{12}{}\protected@file@percent }
 \citation{Notarstefano2025}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.3}Phase 3: Update (Closed-Loop Rollout)}{13}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {3}Task 3: Trajectory Tracking via LQR}{14}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.3}Phase 3: Update (Closed-Loop Rollout)}{14}{}\protected@file@percent }
+\citation{Notarstefano2025Trajectory}
+\@writefile{toc}{\contentsline {chapter}{\numberline {3}Task 3: Trajectory Tracking via LQR}{15}{}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {3.1}Linearization around the Optimal Generated Trajectory}{14}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3.2}Discrete-Time Finite-Horizon TV-LQR Optimization}{14}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3.3}Implementation of the Time-Varying Feedback Controller}{15}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.1}Phase 1: Computation of Optimal Feedback Gains}{15}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.2}Phase 2: State Feedback Control Law}{15}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {4}Task 4: Trajectory Tracking via MPC}{17}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3.1}Linearization around the Optimal Generated Trajectory}{15}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3.2}Discrete-Time Finite-Horizon TV-LQR Optimization}{15}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3.3}Implementation of the Time-Varying Feedback Controller}{16}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.1}Phase 1: Computation of Optimal Feedback Gains}{16}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.2}Phase 2: State Feedback Control Law}{16}{}\protected@file@percent }
+\citation{Notarstefano2025MPC}
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}Task 4: Trajectory Tracking via MPC}{18}{}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {chapter}{\numberline {5}Task 5: Animation and Results}{18}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}The Receding Horizon Strategy}{18}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}MPC Problem Formulation}{18}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}Terminal Cost Design for Stability}{19}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.4}Local Linearization within the Horizon}{19}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.5}Online Optimization via Quadratic Programming}{20}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.6}Closed-Loop Simulation}{20}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}Task 5: Animation and Results}{21}{}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{chap:results}{{5}{18}{}{chapter.5}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.1}Task 1: Trajectory Generation (Step Reference)}{18}{}\protected@file@percent }
-\newlabel{sec:task1_results}{{5.1}{18}{}{section.5.1}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces Task 1: Trajectories and Convergence Metrics.}}{19}{}\protected@file@percent }
-\newlabel{fig:task1_convergence}{{5.1}{19}{}{figure.5.1}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.2}{\ignorespaces Task 1: Armijo Landscapes across iterations.}}{20}{}\protected@file@percent }
-\newlabel{fig:task1_armijo}{{5.2}{20}{}{figure.5.2}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.2}Task 2: Trajectory Generation (Smooth Reference)}{20}{}\protected@file@percent }
-\newlabel{sec:task2_results}{{5.2}{20}{}{section.5.2}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.3}{\ignorespaces Task 2: Trajectories and Convergence Metrics.}}{21}{}\protected@file@percent }
-\newlabel{fig:task2_convergence}{{5.3}{21}{}{figure.5.3}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.4}{\ignorespaces Task 2: Armijo Landscapes across iterations.}}{22}{}\protected@file@percent }
-\newlabel{fig:task2_armijo}{{5.4}{22}{}{figure.5.4}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.3}Task 3: LQR Tracking Performance}{23}{}\protected@file@percent }
-\newlabel{sec:task3_results}{{5.3}{23}{}{section.5.3}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.5}{\ignorespaces Task 3: System Trajectory vs Desired Optimal Trajectory.}}{23}{}\protected@file@percent }
-\newlabel{fig:task3_trajectory}{{5.5}{23}{}{figure.5.5}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.6}{\ignorespaces Task 3: LQR Tracking Errors for different initial condition perturbations.}}{24}{}\protected@file@percent }
-\newlabel{fig:task3_errors}{{5.6}{24}{}{figure.5.6}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.4}Animation}{24}{}\protected@file@percent }
+\newlabel{chap:results}{{5}{21}{}{chapter.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.1}Task 1: Trajectory Generation (Step Reference)}{21}{}\protected@file@percent }
+\newlabel{sec:task1_results}{{5.1}{21}{}{section.5.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.1}Trajectories and Convergence Metrics}{21}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces Task 1: Optimal vs Desired Trajectories.}}{21}{}\protected@file@percent }
+\newlabel{fig:task1_opt_des}{{5.1}{21}{}{figure.5.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.2}{\ignorespaces Task 1: Intermediate Trajectories during optimization.}}{22}{}\protected@file@percent }
+\newlabel{fig:task1_intermediate}{{5.2}{22}{}{figure.5.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.3}{\ignorespaces Task 1: Norm of Descent Direction (Semi-Logarithmic Scale).}}{22}{}\protected@file@percent }
+\newlabel{fig:task1_norm_descent}{{5.3}{22}{}{figure.5.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.4}{\ignorespaces Task 1: Cost Evolution (Semi-Logarithmic Scale).}}{23}{}\protected@file@percent }
+\newlabel{fig:task1_cost_evolution}{{5.4}{23}{}{figure.5.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.2}Armijo Landscapes Across Iterations}{23}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.5}{\ignorespaces Task 1: Armijo Landscape (Iteration 0).}}{23}{}\protected@file@percent }
+\newlabel{fig:task1_armijo_0}{{5.5}{23}{}{figure.5.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.6}{\ignorespaces Task 1: Armijo Landscape (Iteration 1).}}{24}{}\protected@file@percent }
+\newlabel{fig:task1_armijo_1}{{5.6}{24}{}{figure.5.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.7}{\ignorespaces Task 1: Armijo Landscape (Iteration 10).}}{24}{}\protected@file@percent }
+\newlabel{fig:task1_armijo_10}{{5.7}{24}{}{figure.5.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.8}{\ignorespaces Task 1: Armijo Landscape (Iteration 40).}}{25}{}\protected@file@percent }
+\newlabel{fig:task1_armijo_40}{{5.8}{25}{}{figure.5.8}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.2}Task 2: Trajectory Generation (Smooth Reference)}{26}{}\protected@file@percent }
+\newlabel{sec:task2_results}{{5.2}{26}{}{section.5.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.1}Trajectories and Convergence Metrics}{26}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.9}{\ignorespaces Task 2: Optimal vs Desired Trajectories.}}{26}{}\protected@file@percent }
+\newlabel{fig:task2_opt_des}{{5.9}{26}{}{figure.5.9}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.10}{\ignorespaces Task 2: Intermediate Trajectories during optimization.}}{26}{}\protected@file@percent }
+\newlabel{fig:task2_intermediate}{{5.10}{26}{}{figure.5.10}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.11}{\ignorespaces Task 2: Norm of Descent Direction (Semi-Logarithmic Scale).}}{27}{}\protected@file@percent }
+\newlabel{fig:task2_norm_descent}{{5.11}{27}{}{figure.5.11}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.12}{\ignorespaces Task 2: Cost Evolution (Semi-Logarithmic Scale).}}{27}{}\protected@file@percent }
+\newlabel{fig:task2_cost_evolution}{{5.12}{27}{}{figure.5.12}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.2}Armijo Landscapes Across Iterations}{28}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.13}{\ignorespaces Task 2: Armijo Landscape (Iteration 0).}}{28}{}\protected@file@percent }
+\newlabel{fig:task2_armijo_0}{{5.13}{28}{}{figure.5.13}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.14}{\ignorespaces Task 2: Armijo Landscape (Iteration 1).}}{28}{}\protected@file@percent }
+\newlabel{fig:task2_armijo_1}{{5.14}{28}{}{figure.5.14}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.15}{\ignorespaces Task 2: Armijo Landscape (Iteration 10).}}{29}{}\protected@file@percent }
+\newlabel{fig:task2_armijo_10}{{5.15}{29}{}{figure.5.15}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.16}{\ignorespaces Task 2: Armijo Landscape (Iteration 40).}}{29}{}\protected@file@percent }
+\newlabel{fig:task2_armijo_40}{{5.16}{29}{}{figure.5.16}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.3}Task 3: LQR Tracking Performance}{30}{}\protected@file@percent }
+\newlabel{sec:task3_results}{{5.3}{30}{}{section.5.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.1}System Trajectory vs Desired Optimal Trajectory}{30}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.17}{\ignorespaces Task 3: System Trajectory vs Optimal Trajectory (Perturbation 1).}}{30}{}\protected@file@percent }
+\newlabel{fig:task3_traj_1}{{5.17}{30}{}{figure.5.17}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.18}{\ignorespaces Task 3: System Trajectory vs Optimal Trajectory (Perturbation 2).}}{31}{}\protected@file@percent }
+\newlabel{fig:task3_traj_2}{{5.18}{31}{}{figure.5.18}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.19}{\ignorespaces Task 3: System Trajectory vs Optimal Trajectory (Perturbation 3).}}{31}{}\protected@file@percent }
+\newlabel{fig:task3_traj_3}{{5.19}{31}{}{figure.5.19}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.2}Tracking Error}{32}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.20}{\ignorespaces Task 3: Tracking Error (Perturbation 1).}}{32}{}\protected@file@percent }
+\newlabel{fig:task3_err_1}{{5.20}{32}{}{figure.5.20}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.21}{\ignorespaces Task 3: Tracking Error (Perturbation 2).}}{32}{}\protected@file@percent }
+\newlabel{fig:task3_err_2}{{5.21}{32}{}{figure.5.21}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.22}{\ignorespaces Task 3: Tracking Error (Perturbation 3).}}{32}{}\protected@file@percent }
+\newlabel{fig:task3_err_3}{{5.22}{32}{}{figure.5.22}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.4}Task 4: MPC Tracking Performance}{33}{}\protected@file@percent }
+\newlabel{sec:task4_results}{{5.4}{33}{}{section.5.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.1}System Trajectory vs Desired Optimal Trajectory}{33}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.23}{\ignorespaces Task 4: System Trajectory vs Optimal Trajectory (Perturbation 1).}}{33}{}\protected@file@percent }
+\newlabel{fig:task4_traj_1}{{5.23}{33}{}{figure.5.23}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.24}{\ignorespaces Task 4: System Trajectory vs Optimal Trajectory (Perturbation 2).}}{34}{}\protected@file@percent }
+\newlabel{fig:task4_traj_2}{{5.24}{34}{}{figure.5.24}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.25}{\ignorespaces Task 4: System Trajectory vs Optimal Trajectory (Perturbation 3).}}{34}{}\protected@file@percent }
+\newlabel{fig:task4_traj_3}{{5.25}{34}{}{figure.5.25}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.2}Tracking Error}{35}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.26}{\ignorespaces Task 4: Tracking Error (Perturbation 1).}}{35}{}\protected@file@percent }
+\newlabel{fig:task4_err_1}{{5.26}{35}{}{figure.5.26}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.27}{\ignorespaces Task 4: Tracking Error (Perturbation 2).}}{35}{}\protected@file@percent }
+\newlabel{fig:task4_err_2}{{5.27}{35}{}{figure.5.27}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.28}{\ignorespaces Task 4: Tracking Error (Perturbation 3).}}{35}{}\protected@file@percent }
+\newlabel{fig:task4_err_3}{{5.28}{35}{}{figure.5.28}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.5}Animation}{36}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.29}{\ignorespaces Acrobot swing-up animation sequence: from stable hanging to inverted equilibrium.}}{36}{}\protected@file@percent }
+\newlabel{fig:acrobot_animation}{{5.29}{36}{}{figure.5.29}{}}
+\@writefile{toc}{\contentsline {chapter}{Conclusions}{37}{}\protected@file@percent }
 \bibstyle{plain}
 \bibdata{bibfile}
-\@writefile{toc}{\contentsline {chapter}{Conclusions}{25}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{Bibliography}{25}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {5.1}{\ignorespaces Comparison between LQR and MPC for Trajectory Tracking}}{39}{}\protected@file@percent }
+\newlabel{tab:lqr_vs_mpc}{{5.1}{39}{}{table.5.1}{}}
+\@writefile{toc}{\contentsline {chapter}{Bibliography}{39}{}\protected@file@percent }
 \bibcite{Notarstefano2025}{1}
-\gdef \@abspage@last{26}
+\bibcite{Notarstefano2025MPC}{2}
+\bibcite{Notarstefano2025Trajectory}{3}
+\gdef \@abspage@last{40}

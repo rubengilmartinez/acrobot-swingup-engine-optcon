@@ -4,9 +4,32 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Task 1: Trajectories and Convergence Metrics.}}{19}{}%
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Task 1: Armijo Landscapes across iterations.}}{20}{}%
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Task 2: Trajectories and Convergence Metrics.}}{21}{}%
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Task 2: Armijo Landscapes across iterations.}}{22}{}%
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Task 3: System Trajectory vs Desired Optimal Trajectory.}}{23}{}%
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Task 3: LQR Tracking Errors for different initial condition perturbations.}}{24}{}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Task 1: Optimal vs Desired Trajectories.}}{21}{}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Task 1: Intermediate Trajectories during optimization.}}{22}{}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Task 1: Norm of Descent Direction (Semi-Logarithmic Scale).}}{22}{}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Task 1: Cost Evolution (Semi-Logarithmic Scale).}}{23}{}%
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Task 1: Armijo Landscape (Iteration 0).}}{23}{}%
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Task 1: Armijo Landscape (Iteration 1).}}{24}{}%
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Task 1: Armijo Landscape (Iteration 10).}}{24}{}%
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Task 1: Armijo Landscape (Iteration 40).}}{25}{}%
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Task 2: Optimal vs Desired Trajectories.}}{26}{}%
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Task 2: Intermediate Trajectories during optimization.}}{26}{}%
+\contentsline {figure}{\numberline {5.11}{\ignorespaces Task 2: Norm of Descent Direction (Semi-Logarithmic Scale).}}{27}{}%
+\contentsline {figure}{\numberline {5.12}{\ignorespaces Task 2: Cost Evolution (Semi-Logarithmic Scale).}}{27}{}%
+\contentsline {figure}{\numberline {5.13}{\ignorespaces Task 2: Armijo Landscape (Iteration 0).}}{28}{}%
+\contentsline {figure}{\numberline {5.14}{\ignorespaces Task 2: Armijo Landscape (Iteration 1).}}{28}{}%
+\contentsline {figure}{\numberline {5.15}{\ignorespaces Task 2: Armijo Landscape (Iteration 10).}}{29}{}%
+\contentsline {figure}{\numberline {5.16}{\ignorespaces Task 2: Armijo Landscape (Iteration 40).}}{29}{}%
+\contentsline {figure}{\numberline {5.17}{\ignorespaces Task 3: System Trajectory vs Optimal Trajectory (Perturbation 1).}}{30}{}%
+\contentsline {figure}{\numberline {5.18}{\ignorespaces Task 3: System Trajectory vs Optimal Trajectory (Perturbation 2).}}{31}{}%
+\contentsline {figure}{\numberline {5.19}{\ignorespaces Task 3: System Trajectory vs Optimal Trajectory (Perturbation 3).}}{31}{}%
+\contentsline {figure}{\numberline {5.20}{\ignorespaces Task 3: Tracking Error (Perturbation 1).}}{32}{}%
+\contentsline {figure}{\numberline {5.21}{\ignorespaces Task 3: Tracking Error (Perturbation 2).}}{32}{}%
+\contentsline {figure}{\numberline {5.22}{\ignorespaces Task 3: Tracking Error (Perturbation 3).}}{32}{}%
+\contentsline {figure}{\numberline {5.23}{\ignorespaces Task 4: System Trajectory vs Optimal Trajectory (Perturbation 1).}}{33}{}%
+\contentsline {figure}{\numberline {5.24}{\ignorespaces Task 4: System Trajectory vs Optimal Trajectory (Perturbation 2).}}{34}{}%
+\contentsline {figure}{\numberline {5.25}{\ignorespaces Task 4: System Trajectory vs Optimal Trajectory (Perturbation 3).}}{34}{}%
+\contentsline {figure}{\numberline {5.26}{\ignorespaces Task 4: Tracking Error (Perturbation 1).}}{35}{}%
+\contentsline {figure}{\numberline {5.27}{\ignorespaces Task 4: Tracking Error (Perturbation 2).}}{35}{}%
+\contentsline {figure}{\numberline {5.28}{\ignorespaces Task 4: Tracking Error (Perturbation 3).}}{35}{}%
+\contentsline {figure}{\numberline {5.29}{\ignorespaces Acrobot swing-up animation sequence: from stable hanging to inverted equilibrium.}}{36}{}%

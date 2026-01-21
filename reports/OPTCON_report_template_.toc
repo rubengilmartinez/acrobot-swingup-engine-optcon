@@ -1,30 +1,45 @@
 \babel@toc {english}{}\relax 
-\contentsline {chapter}{Introduction}{6}{}%
-\contentsline {chapter}{\numberline {1}Task 0: Problem Setup and Discretization}{7}{}%
-\contentsline {section}{\numberline {1.1}System Description}{7}{}%
-\contentsline {section}{\numberline {1.2}Equations of Motion}{7}{}%
-\contentsline {section}{\numberline {1.3}Physical Parameters}{8}{}%
-\contentsline {section}{\numberline {1.4}Discretization via Runge-Kutta 4}{8}{}%
-\contentsline {chapter}{\numberline {2}Task 1 and 2: Trajectory Generation.}{9}{}%
-\contentsline {section}{\numberline {2.1}Step 1: Computation of Equilibria}{9}{}%
-\contentsline {section}{\numberline {2.2}Step 2: Definition of Reference Curves}{10}{}%
-\contentsline {subsection}{\numberline {2.2.1}Task 1: The Step Reference}{10}{}%
-\contentsline {subsection}{\numberline {2.2.2}Task 2: The "Natural" Smooth Reference}{10}{}%
-\contentsline {section}{\numberline {2.3}Step 3: The Optimization Loop (Newton via LQR)}{11}{}%
-\contentsline {subsection}{\numberline {2.3.1}Phase 1: Forward Pass (Nominal Trajectory)}{11}{}%
-\contentsline {subsection}{\numberline {2.3.2}Phase 2: Backward Pass (Solving LQR)}{11}{}%
-\contentsline {subsection}{\numberline {2.3.3}Phase 3: Update (Closed-Loop Rollout)}{13}{}%
-\contentsline {chapter}{\numberline {3}Task 3: Trajectory Tracking via LQR}{14}{}%
-\contentsline {section}{\numberline {3.1}Linearization around the Optimal Generated Trajectory}{14}{}%
-\contentsline {section}{\numberline {3.2}Discrete-Time Finite-Horizon TV-LQR Optimization}{14}{}%
-\contentsline {section}{\numberline {3.3}Implementation of the Time-Varying Feedback Controller}{15}{}%
-\contentsline {subsection}{\numberline {3.3.1}Phase 1: Computation of Optimal Feedback Gains}{15}{}%
-\contentsline {subsection}{\numberline {3.3.2}Phase 2: State Feedback Control Law}{15}{}%
-\contentsline {chapter}{\numberline {4}Task 4: Trajectory Tracking via MPC}{17}{}%
-\contentsline {chapter}{\numberline {5}Task 5: Animation and Results}{18}{}%
-\contentsline {section}{\numberline {5.1}Task 1: Trajectory Generation (Step Reference)}{18}{}%
-\contentsline {section}{\numberline {5.2}Task 2: Trajectory Generation (Smooth Reference)}{20}{}%
-\contentsline {section}{\numberline {5.3}Task 3: LQR Tracking Performance}{23}{}%
-\contentsline {section}{\numberline {5.4}Animation}{24}{}%
-\contentsline {chapter}{Conclusions}{25}{}%
-\contentsline {chapter}{Bibliography}{25}{}%
+\contentsline {chapter}{Introduction}{7}{}%
+\contentsline {chapter}{\numberline {1}Task 0: Problem Setup and Discretization}{8}{}%
+\contentsline {section}{\numberline {1.1}System Description}{8}{}%
+\contentsline {section}{\numberline {1.2}Equations of Motion}{8}{}%
+\contentsline {section}{\numberline {1.3}Physical Parameters}{9}{}%
+\contentsline {section}{\numberline {1.4}Discretization via Runge-Kutta 4}{9}{}%
+\contentsline {chapter}{\numberline {2}Task 1 and 2: Trajectory Generation.}{10}{}%
+\contentsline {section}{\numberline {2.1}Step 1: Computation of Equilibria}{10}{}%
+\contentsline {section}{\numberline {2.2}Step 2: Definition of Reference Curves}{11}{}%
+\contentsline {subsection}{\numberline {2.2.1}Task 1: The Step Reference}{11}{}%
+\contentsline {subsection}{\numberline {2.2.2}Task 2: The "Natural" Smooth Reference}{11}{}%
+\contentsline {section}{\numberline {2.3}Step 3: The Optimization Loop (Newton via iLQR)}{12}{}%
+\contentsline {subsection}{\numberline {2.3.1}Phase 1: Forward Pass (Nominal Trajectory)}{12}{}%
+\contentsline {subsection}{\numberline {2.3.2}Phase 2: Backward Pass (Solving LQR Affine)}{12}{}%
+\contentsline {subsection}{\numberline {2.3.3}Phase 3: Update (Closed-Loop Rollout)}{14}{}%
+\contentsline {chapter}{\numberline {3}Task 3: Trajectory Tracking via LQR}{15}{}%
+\contentsline {section}{\numberline {3.1}Linearization around the Optimal Generated Trajectory}{15}{}%
+\contentsline {section}{\numberline {3.2}Discrete-Time Finite-Horizon TV-LQR Optimization}{15}{}%
+\contentsline {section}{\numberline {3.3}Implementation of the Time-Varying Feedback Controller}{16}{}%
+\contentsline {subsection}{\numberline {3.3.1}Phase 1: Computation of Optimal Feedback Gains}{16}{}%
+\contentsline {subsection}{\numberline {3.3.2}Phase 2: State Feedback Control Law}{16}{}%
+\contentsline {chapter}{\numberline {4}Task 4: Trajectory Tracking via MPC}{18}{}%
+\contentsline {section}{\numberline {4.1}The Receding Horizon Strategy}{18}{}%
+\contentsline {section}{\numberline {4.2}MPC Problem Formulation}{18}{}%
+\contentsline {section}{\numberline {4.3}Terminal Cost Design for Stability}{19}{}%
+\contentsline {section}{\numberline {4.4}Local Linearization within the Horizon}{19}{}%
+\contentsline {section}{\numberline {4.5}Online Optimization via Quadratic Programming}{20}{}%
+\contentsline {section}{\numberline {4.6}Closed-Loop Simulation}{20}{}%
+\contentsline {chapter}{\numberline {5}Task 5: Animation and Results}{21}{}%
+\contentsline {section}{\numberline {5.1}Task 1: Trajectory Generation (Step Reference)}{21}{}%
+\contentsline {subsection}{\numberline {5.1.1}Trajectories and Convergence Metrics}{21}{}%
+\contentsline {subsection}{\numberline {5.1.2}Armijo Landscapes Across Iterations}{23}{}%
+\contentsline {section}{\numberline {5.2}Task 2: Trajectory Generation (Smooth Reference)}{26}{}%
+\contentsline {subsection}{\numberline {5.2.1}Trajectories and Convergence Metrics}{26}{}%
+\contentsline {subsection}{\numberline {5.2.2}Armijo Landscapes Across Iterations}{28}{}%
+\contentsline {section}{\numberline {5.3}Task 3: LQR Tracking Performance}{30}{}%
+\contentsline {subsection}{\numberline {5.3.1}System Trajectory vs Desired Optimal Trajectory}{30}{}%
+\contentsline {subsection}{\numberline {5.3.2}Tracking Error}{32}{}%
+\contentsline {section}{\numberline {5.4}Task 4: MPC Tracking Performance}{33}{}%
+\contentsline {subsection}{\numberline {5.4.1}System Trajectory vs Desired Optimal Trajectory}{33}{}%
+\contentsline {subsection}{\numberline {5.4.2}Tracking Error}{35}{}%
+\contentsline {section}{\numberline {5.5}Animation}{36}{}%
+\contentsline {chapter}{Conclusions}{37}{}%
+\contentsline {chapter}{Bibliography}{39}{}%
